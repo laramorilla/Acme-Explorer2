@@ -162,7 +162,7 @@ public class MessageService {
 		} else
 			saved = this.messageRepository.save(message);
 
-		return savedCopy;
+		return saved;
 	}
 
 	public Message notify(final Message message) {

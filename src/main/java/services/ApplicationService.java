@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -89,22 +90,26 @@ public class ApplicationService {
 		} else if (application.getStatus().equals(Status.PENDING))
 			Assert.isNull(application.getRejectReason());
 
-		final Application old = this.findOne(application.getId());
+		if(application.getId()!=0) {
 
-		if (old != null && old.getStatus() != application.getStatus()) {
-			final Message message = this.messageService.create();
-			message.setSubject("Application status changed from " + old.getStatus() + " to " + application.getStatus());
-			message.setBody("Trip: " + application.getTrip().getTicker() + ". Applicant: " + application.getApplicant().getName());
-			message.setPriority(Priority.HIGH);
-			final Admin sender = this.adminService.findAll().iterator().next();
-			message.setSender(sender);
-			message.setRecipient(application.getApplicant());
-			message.setFolder(this.folderService.findByFolderName(sender.getUserAccount().getId(), "Out Box"));
-			final Message copyMessage = this.messageService.copy(message);
-			copyMessage.setRecipient(application.getTrip().getManager());
-			this.messageService.save(message);
-			this.messageService.save(copyMessage);
+			final Application old = this.findOne(application.getId());
+
+		/*	if (old != null && old.getStatus() != application.getStatus()) {
+				final Message message = this.messageService.create();
+				message.setSubject("Application status changed from " + old.getStatus() + " to " + application.getStatus());
+				message.setBody("Trip: " + application.getTrip().getTicker() + ". Applicant: " + application.getApplicant().getName());
+				message.setPriority(Priority.HIGH);
+				final Admin sender = this.adminService.findAll().iterator().next();
+				message.setSender(sender);
+				message.setRecipient(application.getApplicant());
+				message.setFolder(this.folderService.findByFolderName(sender.getUserAccount().getId(), "Out Box"));
+				final Message copyMessage = this.messageService.copy(message);
+				copyMessage.setRecipient(application.getTrip().getManager());
+				this.messageService.save(message);
+				this.messageService.save(copyMessage);
+			}*/
 		}
+
 		final Application saved = this.applicationRepository.save(application);
 		return saved;
 	}

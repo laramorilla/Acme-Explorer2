@@ -82,7 +82,7 @@
 </display:table>
 
 <jstl:if test="${requestURI == 'application/manager/list.do' }">
-	<input type="button" name="cancel" value="<spring:message code="application.cancel" />" onclick="javascript: relativeRedir('trip/display.do?tripId=${tripId}');" />
+	<input type="button" name="cancel" value="<spring:message code="application.cancel" />" onclick="javascript: relativeRedir('welcome/index.do');" />
 </jstl:if>
 
 

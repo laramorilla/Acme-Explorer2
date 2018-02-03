@@ -167,8 +167,8 @@ public class ApplicationExplorerController extends AbstractController {
 		explorer = this.explorerService.findByPrincipal();
 
 		availableTrips = this.tripService.findAvailableTrips(new Date(System.currentTimeMillis() - 1000));
-		tripsExplorer = this.tripService.listTripPerExplorer(explorer);
-		availableTrips.removeAll(tripsExplorer);
+		//tripsExplorer = this.tripService.listTripPerExplorer(explorer);
+		//availableTrips.removeAll(tripsExplorer);
 
 		cancelURI = "application/explorer/list.do";
 		actionURI = "application/explorer/edit.do";

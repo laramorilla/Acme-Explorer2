@@ -38,20 +38,6 @@
 		<br />
 	</security:authorize>
 	
-	<jstl:if test="${auditor.id == 0}">
-		<form:hidden path="userAccount.authorities" />
-		
-		<b><form:label path="userAccount.username"><spring:message code="auditor.userAccount.username" /></form:label>:&nbsp;</b>
-		<form:input path="userAccount.username" />
-		<form:errors path="userAccount.username" cssClass="error"  />
-		<br />
-
-		<b><form:label path="userAccount.password"><spring:message code="auditor.userAccount.password" /></form:label>:&nbsp;</b>
-		<form:password path="userAccount.password" />
-		<form:errors path="userAccount.password" cssClass="error"  />
-		<br />
-	</jstl:if>
-	
 	<b><form:label path="name"><spring:message code="auditor.name"/></form:label>:&nbsp;</b>
 	<form:input path="name"/>
 	<form:errors path="name" cssClass="error"/>

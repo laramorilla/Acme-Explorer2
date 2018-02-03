@@ -35,7 +35,7 @@
 
 		<form:select path="recipient">
 			<form:option label="----" value="0" />
-			<form:options items="${actors}" itemLabel="name" itemValue="id" />
+			<form:options items="${actors}" itemLabel="userAccount.username" itemValue="id" />
 		</form:select>
 	<form:errors path="recipient" cssClass="error" />
 	<br />

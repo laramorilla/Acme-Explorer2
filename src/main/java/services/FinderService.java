@@ -141,6 +141,7 @@ public class FinderService {
 		endDateCalendar.set(2100, 01, 01, 00, 00);
 		Date endDate = new Date();
 		endDate = endDateCalendar.getTime();
+		Date actual= new Date();
 		Double priceMin = 0.0;
 		Double priceMax = 9999.0;
 
@@ -159,7 +160,7 @@ public class FinderService {
 		Collection<Trip> aux = null;
 		aux = new ArrayList<Trip>();
 
-		aux = this.finderRepository.findTripsPerFinder(keyword, startDate, endDate, priceMin, priceMax);
+		aux = this.finderRepository.findTripsPerFinder(keyword, startDate, endDate, actual,priceMin, priceMax);
 
 		if (aux.size() > maxTripDisplay) {
 			res = new ArrayList<Trip>(aux);
